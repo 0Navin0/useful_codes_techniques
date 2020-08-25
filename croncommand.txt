@@ -1,0 +1,23 @@
+# standard output and standard error both sent to crontest.txt ) 
+* * * * * python /home/navin/Tractwise_data/useful_codes_techniques/crontest.py >> /home/navin/Tractwise_data/useful_codes_techniques/crontest.txt 2>&1
+
+# To run /usr/bin/sample.sh at 12.59 every day and supress the output(suppressing the output here simply means...it is being dumped into dev/null which gets cleared autometically.)
+59 12 * * * simon /usr/bin/sample.sh > /dev/null 2>&1
+
+# To run sample.sh everyday at 9pm (21:00)
+0 21 * * * sample.sh 1>/dev/null 2>&1
+
+# To run sample.sh every Tuesday to Saturday at 1am (01:00)
+0 1 * * 2-7 sample.sh 1>/dev/null 2>&1
+
+# To run sample.sh at 07:30, 09:30 13:30 and 15:30
+30 07,09,13,15 * * * sample.sh
+
+# run multiple commands daily
+@daily <command1> && <command2>
+
+## linux commands related to cron:
+crontab -e (to edit cronjobs)
+crontab -u <username> -l (to list all the scheduled cronjobs for the given user)
+crontab -r (to delete the existing cronjobs of the default user...in my case it's only me.) 
+
